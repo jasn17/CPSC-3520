@@ -217,13 +217,24 @@ u → v, u ≠ ε
 **Type 1: Context-Sensitive Grammar (CSG)**
 uXw → uvw
 X must appear in the context of u and w
+```
+Ab -> BA
+```
 
 **Type 2: Context-Free Grammar (CFG)**
 X → v, X is a single non-terminal
 Most programming languages use this
+```
+S -> aSb
+```
 
 **Type 3: Regular Grammar (RG)**
 X → a, X → aY, or X → ε
+```
+A -> aB
+B -> bC
+C -> c
+```
 
 ### Hierarchy of Languages:
 The hierarchy of languages can be represented as:
@@ -238,5 +249,78 @@ This means:
 - For example, **Type 3 languages** are the most restrictive, while **Type 0 languages** are the least restrictive.
 - This hierarchy is fundamental in understanding the computational power and limitations of different grammar types.
 
+### A Sample Grammar Gs: Type and L(Gs)
+```
+S → AB
+S → C
+A → C
+A → a
+B → b
+B → c
+C → d
+```
+Analysis of Grammar Gs:
+1. **Type 3 (Regular Grammar)?**
+    - Productions are of the form `X → a`, `X → aY`, or `X → ε`, where `X` and `Y` are non-terminals and `a` is a terminal.
+    - **No**, since the left-hand sides of some productions (e.g., `S → AB`) have more than one non-terminal.
 
+2. **Type 2 (Context-Free Grammar)?**
+    - Productions are of the form `X → v`, where `v` is an arbitrary string of symbols in `V`, and `X` is a single non-terminal.
+    - **Yes**, since each production rule has a single non-terminal on the left-hand side.
 
+3. **Type 1 (Context-Sensitive Grammar)?**
+    - Productions are of the form `uXw → uvw`, where `u`, `v`, and `w` are arbitrary strings of symbols in `V`, `v` is non-null, and `X` is a single non-terminal.
+    - **Yes**, since it meets the conditions for context-free grammars, which are a subset of context-sensitive grammars.
+
+4. **Type 0 (Unrestricted Grammar)?**
+    - All grammars are unrestricted.
+    - **Yes**, since all grammars are, by definition, unrestricted.
+
+Components of Grammar Gs:
+- **Terminals**: `{a, b, c, d}`
+- **Non-terminals**: `{S, A, B, C}`
+Summary:
+- Grammar Gs belongs to **Type 2 (Context-Free Grammar)**, **Type 1 (Context-Sensitive Grammar)**, and **Type 0 (Unrestricted Grammar)**.
+- It does **not** belong to **Type 3 (Regular Grammar)**.
+
+### Another Example of Chomsky Hierarchy of Grammars
+```
+S -> aS | ε
+```
+1. **Type 3 (Regular Grammar)**:
+    - The production `S -> aS` is of the form `X -> aY`, where `X` and `Y` are non-terminals, and `a` is a terminal.
+    - The production `S -> ε` is allowed in regular grammars.
+    - **Yes**, this grammar is a regular grammar.
+
+2. **Type 2 (Context-Free Grammar)**:
+    - The production `S -> aS` is of the form `X -> v`, where `X` is a single non-terminal, and `v` is a string of terminals and/or non-terminals.
+    - **Yes**, this grammar is a context-free grammar.
+
+3. **Type 1 (Context-Sensitive Grammar)**:
+    - The production `S -> aS` satisfies the condition `uXw -> uvw`, where `u`, `v`, and `w` are strings of terminals and/or non-terminals, and `v` is non-empty.
+    - The production `S -> ε` is valid because it applies only when `S` is the start symbol.
+    - **Yes**, this grammar is a context-sensitive grammar.
+
+4. **Type 0 (Unrestricted Grammar)**:
+    - All grammars are unrestricted by definition.
+    - **Yes**, this grammar is an unrestricted grammar.
+
+#### Summary:
+This grammar belongs to **Type 3 (Regular Grammar)**, **Type 2 (Context-Free Grammar)**, **Type 1 (Context-Sensitive Grammar)**, and **Type 0 (Unrestricted Grammar)**. It is valid for all types in the Chomsky Hierarchy.
+
+---
+
+# *BNF Syntax*
+```
+<s> ::= <a><b> | <c>
+<a> ::= <c> | a
+<b> ::= b | c
+<c> ::= d
+```
+<...>: non-terminals
+::=: “is defined as”
+|: alternatives
+
+Terminals: actual symbols in the language
+
+# *Deviation Parse Trees*
