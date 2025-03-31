@@ -340,8 +340,10 @@ C → d
 ```
 Construct deravation tree for generating the string 'dc'
 - First derivation: S ⇒ AB ⇒ CB ⇒ dB ⇒ dc
+
 ![](img/1.png)
 - Second derivation:  S ⇒ AB ⇒ A c ⇒ d c
+
 ![](img/2.png)
 
 # *Grammatical Ambiguity*
