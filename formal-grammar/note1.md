@@ -123,9 +123,8 @@ x,y,z are terminal symbols
     - Start with `S -> AB`.
     - `A -> Ax` (choose the production rule where `A` expands to `Ax`).
     - `A -> y` (expand the remaining `A` to `y`).
-    - Replace the `x` with nothing (as it is not part of the final string).
     - `B -> z`.
-    - Combining these, `S -> AB -> A(B) -> Ax(B) -> yx(B) -> yxz`.
+    - Combining these, `S -> AB -> A(B) -> Ax(B) -> yx(B) -> yyz`.
 
 4. **xxz**:
     - This string is **not valid** because:
@@ -135,4 +134,51 @@ x,y,z are terminal symbols
 ### Summary:
 The grammar enforces that `A` must eventually resolve to `y`, and `B` must always resolve to `z`. Strings like `yz`, `yxz`, and `yyz` are valid because they follow these rules. However, `xxz` is invalid as it does not conform to the requirement that `A` resolves to `y`.
 
+### Another Example Grammar
+```
+S -> XY
+X -> aX | b
+Y -> cY | d
+```
+Alphabet: V = {S, X, Y, a, b, c, d}  
+Non-terminal symbols: S, X, Y  
+Terminal symbols: a, b, c, d  
+
+### Explanation of Possible Strings:
+1. **bc**:
+    - Start with `S -> XY`.
+    - `X -> b` (choose the production rule where `X` directly becomes `b`).
+    - `Y -> c` (choose the production rule where `Y` directly becomes `c`).
+    - Combining these, `S -> XY -> bc`.
+
+2. **aacd**:
+    X must generate: aa
+    Y must generate: cd 
+
+    X = aa?
+        ```
+        X -> aX
+        aX -> aaX
+        aaX → ??? No rule turns X into ε
+        ```
+    → Uh-oh! X must end with b. There’s no rule for X that produces ε.
+        So you can't stop with aa AND you must eventually go to b
+        So X can only generate:
+        b, ab, aab, aaab
+
+    - This string aacd is **not valid** under this grammar.
+
+### Note:
+The string `aacd` is **not valid** because `X` cannot resolve to just `aa` without ending in `b`. The grammar enforces that `X` must eventually resolve to `b`, making it impossible to derive `aacd`.
+
+3. **ad**:
+    - This string is **not valid** because:
+      - According to the grammar, `X` must eventually resolve to `b`, but the string `ad` implies that `X` was resolved to `a` without further expansion, which violates the grammar rules.
+
+4. **bcd**:
+    - This string is **not valid** because:
+      - According to the grammar, `Y` must eventually resolve to `d`, but the string `bcd` implies that `Y` was resolved to `c` without further expansion, which violates the grammar rules.
+
+### Summary:
+The grammar enforces that `X` must eventually resolve to `b` and `Y` must eventually resolve to `d`. Strings like `bc` and `aacd` are valid because they follow these rules. However, strings like `ad` and `bcd` are invalid as they do not conform to the requirement that `X` resolves to `b` and `Y` resolves to `d`.
 
