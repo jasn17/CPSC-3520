@@ -340,9 +340,9 @@ C → d
 ```
 Construct deravation tree for generating the string 'dc'
 - First derivation: S ⇒ AB ⇒ CB ⇒ dB ⇒ dc
-[alt text](img/1.png)
+![](img/1.png)
 - Second derivation:  S ⇒ AB ⇒ A c ⇒ d c
-[alt text](img/2.png)
+![](img/2.png)
 
 # *Grammatical Ambiguity*
 A grammar is ambiguous if a string can be derived in multiple distinct ways
