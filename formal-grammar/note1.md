@@ -182,3 +182,23 @@ The string `aacd` is **not valid** because `X` cannot resolve to just `aa` witho
 ### Summary:
 The grammar enforces that `X` must eventually resolve to `b` and `Y` must eventually resolve to `d`. Strings like `bc` and `aacd` are valid because they follow these rules. However, strings like `ad` and `bcd` are invalid as they do not conform to the requirement that `X` resolves to `b` and `Y` resolves to `d`.
 
+# *Formal Defintion of Grammar*
+A grammar G is defined as:
+G = (VT, VN, P, S), where
+
+VT = Terminal symbols (cannot be replaced)
+VN = Non-terminal symbols (can be replaced)
+P = Productions (rules)
+S = Start symbol (S ∈ VN)
+
+```
+S -> XY
+X -> aX | b
+Y -> cY | d
+V = {S, X, Y, a, b, c, d}
+```
+Terminals {S, X, Y}
+Non-terminals {S, A, B}
+Starting symbol: S
+
+
