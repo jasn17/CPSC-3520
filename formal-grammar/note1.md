@@ -201,4 +201,42 @@ Terminals {S, X, Y}
 Non-terminals {S, A, B}
 Starting symbol: S
 
+---
+
+# *Grammar Application Model* 
+Grammar can be used in one of the two modes: 
+**Generative**: use P to create strings from S
+**Analytic**: given a string, determine if it belongs to the grammar and what structure generated it
+
+---
+
+# *Chomsky Hierarchy of Grammars*
+**Type 0: Unrestricted Grammar (most general)**
+u → v, u ≠ ε
+
+**Type 1: Context-Sensitive Grammar (CSG)**
+uXw → uvw
+X must appear in the context of u and w
+
+**Type 2: Context-Free Grammar (CFG)**
+X → v, X is a single non-terminal
+Most programming languages use this
+
+**Type 3: Regular Grammar (RG)**
+X → a, X → aY, or X → ε
+
+### Hierarchy of Languages:
+The hierarchy of languages can be represented as:
+
+```
+L(Type 3) ⊂ L(Type 2) ⊂ L(Type 1) ⊂ L(Type 0)
+```
+This means:
+- All **Type 3 languages** (Regular Grammars) are also **Type 2 languages** (Context-Free Grammars), **Type 1 languages** (Context-Sensitive Grammars), and **Type 0 languages** (Unrestricted Grammars).
+- However, not all **Type 2 languages** can be **Type 3 languages**, and similarly, the inclusion is strict for each type in the hierarchy.
+- Each type in the hierarchy represents a broader class of languages with fewer restrictions.
+- For example, **Type 3 languages** are the most restrictive, while **Type 0 languages** are the least restrictive.
+- This hierarchy is fundamental in understanding the computational power and limitations of different grammar types.
+
+
 
