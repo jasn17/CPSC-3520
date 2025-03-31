@@ -324,3 +324,45 @@ This grammar belongs to **Type 3 (Regular Grammar)**, **Type 2 (Context-Free Gra
 Terminals: actual symbols in the language
 
 # *Deviation Parse Trees*
+Used to represent hierarchical structure of strings:
+    Root: Start symbol (S)
+    Interior nodes: Non-terminals
+    Leaf nodes: Terminals
+    Children = RHS of a production; Parent = LHS
+
+### Example
+Consider the following production in grammar
+```
+S → AB
+A → C | d
+B → c
+C → d
+```
+Construct deravation tree for generating the string 'dc'
+- First derivation: S ⇒ AB ⇒ CB ⇒ dB ⇒ dc
+[alt text](img/1.png)
+- Second derivation:  S ⇒ AB ⇒ A c ⇒ d c
+[alt text](img/2.png)
+
+# *Grammatical Ambiguity*
+A grammar is ambiguous if a string can be derived in multiple distinct ways
+Multiple derivation trees for the same string
+
+### Common Ambiguities in Programming
+**Operator precedence**: 
+    Example: a = b + c ∗a (resolved by precedence rules)
+**Nested if-else statements** 
+    (Requires explicit syntax rules or an interpretationalgorithm.)
+**Function vs array syntax**: 
+    a(2) can mean a function or array
+
+# *Review*
+Formal grammars define the syntax of programming languages
+
+They allow compilers to parse and understand code
+
+Different grammar types serve different language complexity needs
+
+Derivation trees help visualize string structure
+
+Ambiguities must be resolved through design or parsing rules
