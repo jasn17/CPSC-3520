@@ -263,7 +263,7 @@ We can use CYK to:
 
 ### CYK Algorithm Steps
 1. Convert grammar G to CNF
-2. nitialize a table T[n][n], where n is the length of input string
+2. Initialize a table T[n][n], where n is the length of input string
     T[i][j] stores the set of non-terminals that can derive the substring x[i..j]
 3. Base case:
     For each character xi, find all A → xi and add A to T[i][i]
