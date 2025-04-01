@@ -273,3 +273,27 @@ We can use CYK to:
 5. Final step:
     If the start symbol S is in T[1][n], the string is valid
 
+Example Grammar for CYK
+```
+S → AB | BB
+A → CC | AB | a
+B → BB | CA | b
+C → BA | AA | b
+```
+Example String: aabb
+    Use CYK to fill the parsing table
+    Final step: check if S appears in top-right cell of the table
+
+![](img/cyk0.png)
+
+![](img/cyk1.png)
+
+![](img/cyk2.png)
+
+![](img/cyk3.png)
+
+![](img/cyk4.png)
+
+![](img/cyk5.png)
+
+
