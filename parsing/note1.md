@@ -288,12 +288,40 @@ Example String: aabb
 
 ![](img/cyk1.png)
 
+^First row @ bottom: You can get *a* from *A* and *b* from *B* OR *C*
+**Hence A | A | BC | BC**
+
 ![](img/cyk2.png)
 
+^Second row @ bottom: We take the cartesian product of row[i] and row[i+1]
+Hence: 
+    The cartesian product of A * A = AA. 
+        AA can be found in C
+        `C → BA | AA | b`
+    The cartesian product of A * BC = AB, AC. 
+        AB can be found in S AND A. 
+        `A → CC | AB | a`
+        AC is not in the rule
+    The cartesian product of BC * BC = BB, BC, CB, CC.
+        BB can be found in S AND B
+        `S → AB | BB`
+        `B → BB | CA | b`
+        BC is not in the rule
+        CB is not in the rule
+        CC can be found in A
+        `A → CC | AB | a`
+**Hence: C | SA | SBA**
+    
 ![](img/cyk3.png)
+
+^Third row @ bottom: We are going to look at three letters at a time 
 
 ![](img/cyk4.png)
 
+^Forth row @ bottom: 
+
 ![](img/cyk5.png)
+
+
 
 
