@@ -20,3 +20,28 @@ D(<span style="color:purple">v</span>) = <span style="color:blue">min</span>( D(
 
 <br>
 <span style="color:blue">Continue until all nodes are in</span> <span style="color:blue">N'</span>.
+
+```python
+import math
+
+def dijkstra(graph, start):
+    # Initialization
+    visited = set()  # N'
+    distances = {node: math.inf for node in graph}  # D(v)
+    distances[start] = 0  # Cost to reach the starting node is 0
+
+    while len(visited) < len(graph):
+        # Find the unvisited node with the smallest known distance
+        unvisited_nodes = {node: distances[node] for node in graph if node not in visited}
+        w = min(unvisited_nodes, key=unvisited_nodes.get)
+
+        # Mark w as visited
+        visited.add(w)
+
+        # Update distances for all neighbors of w
+        for neighbor, cost in graph[w].items():
+            if neighbor not in visited:
+                distances[neighbor] = min(distances[neighbor], distances[w] + cost)
+
+    return distances
+```
