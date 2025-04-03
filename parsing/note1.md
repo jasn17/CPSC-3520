@@ -26,7 +26,7 @@ minic is a toy language modeled after a subset of C, used to demonstrate grammar
 <digit> ::= 0 | 1 | ... | 9
 <numeral> ::= <digit> | <digit> <numeral>
 ``` 
- 
+  
 ### Terminal Meaning
 **Terminal**    **Meaning**  
 lparens	            (  
