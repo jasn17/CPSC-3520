@@ -21,6 +21,8 @@ D(<span style="color:purple">v</span>) = <span style="color:blue">min</span>( D(
 <br>
 <span style="color:blue">Continue until all nodes are in</span> <span style="color:blue">N'</span>.
 
+---
+
 ```python
 import math
 
