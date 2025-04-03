@@ -4,7 +4,7 @@ minic is a toy language modeled after a subset of C, used to demonstrate grammar
 
 ```minic
 <transunit> ::= <main-decl> <body>
-<main-decl> ::= <type> main <arg> 
+<main-decl> ::= <type> main <arg>
 <type> ::= int | void
 <arg> ::= lparens <type> rparens
 <body> ::= lbrace <decl> <statseq> rbrace
