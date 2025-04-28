@@ -117,3 +117,41 @@ val f2 : int list * ’a list -> ’a list list = <fun>
 **f2 is called 3**
 Let n be the length  of the first list [2;1]
 f1 will always be called n times, f2 will always be called n + 1 times
+
+---
+
+## Which of the following best describes the tuple usage in SML functions?
+
+Tuples are used for concatenating strings.
+**Tuples in SML cannot store numbers.**
+Tuples allow multiple parameters to be passed to functions as a single unit.
+Tuples are used to store lists of varying types.
+
+
+---
+
+## In SML, which of the following represents a polymorphic function?
+
+A function that performs multiple tasks in one definition
+**A function with a type signature containing type variables like 'a -> 'a**
+A function that only uses the print statement
+A function that operates only on integers
+
+---
+
+## What is the inferred type of the function identity below in SML?
+`- fun identity x = x;`
+
+string -> string
+real -> real
+**'a -> 'a**
+int -> int
+
+---
+
+## What is the "right to be forgotten" in the GDPR?
+
+**Requesting deletion of personal data**
+The ability to sue data controllers
+Accessing encrypted communications
+Opting out of data collection
