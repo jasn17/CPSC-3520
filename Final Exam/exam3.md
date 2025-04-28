@@ -1,4 +1,4 @@
-## In lambda calculus, what is the main purpose of abstraction in expressions like λx.x?
+### In lambda calculus, what is the main purpose of abstraction in expressions like λx.x?
 
 To bind variables to constant values
 To define functions with parameters
@@ -9,7 +9,7 @@ To evaluate functions directly
 
 ---
 
-## Is the following a syntactically correct λ-calculus expression?
+### Is the following a syntactically correct λ-calculus expression?
 
 ((λ x.x) 4)
 
@@ -24,7 +24,7 @@ Note: Whenever you see [value/variable] expression, just think “plug that valu
 
 ---
 
-## Is the following a syntactically correct λ-calculus expression?
+### Is the following a syntactically correct λ-calculus expression?
 
 (((λ x.(λ y.(+ x y))) 5) 6)
 
@@ -53,7 +53,7 @@ let rec f2 = function (list1, list2) ->
 		f1((List.hd list1), list2) :: f2((List.t1 list1), list2)
 ```
 
-## Show below the signatures of functions f1 and f2. Show one function per line and in the format ocaml would report the signature
+### Show below the signatures of functions f1 and f2. Show one function per line and in the format ocaml would report the signature
 
 **ANS 1**
 val f1 : int * ’a list -> ’a list = <fun>
@@ -68,8 +68,8 @@ val f2 : int list * ’a list -> ’a list list = <fun>
 			- and list2 is a list of some arbitrary type (’a list)
 		and returns a list of lists of that same arbitrary type (’a list list)."
 
-## Define the output
-### f2([2;0], [14;23;47;4]);;
+### Define the output
+#### f2([2;0], [14;23;47;4]);;
 `- : int list list = [[4]; [23; 47; 4]][[4]; [23;47;4]]`
 	f2 ([2;0], [14;23;47;4])
 	it1:
@@ -97,14 +97,14 @@ val f2 : int list * ’a list -> ’a list list = <fun>
 	Putting it all together:
 	[ [4] ; [23;47;4] ]
 
-### f2([2;6], [14;23;47;4])
+#### f2([2;6], [14;23;47;4])
 `- : Exception: Failure "index no present in list".`
 	Passing 6 (or 4, or anything ≥ 4) into f1 will overshoot and trigger the exception.
 
-### f2([2;0], [])
+#### f2([2;0], [])
 `- : int list list = []`
 
-### f2([1;1;0;1], [4;23])
+#### f2([1;1;0;1], [4;23])
 `- : int list list = [[]; []; [23]; []]`
 	trace f2([1;1;0;1], [4;23]):
 		head = 1 → f1(1, [4;23]) → strip 4 → [23], then List.tl [23] → []
@@ -112,7 +112,7 @@ val f2 : int list * ’a list -> ’a list list = <fun>
 		head = 0 → f1(0, [4;23]) → List.tl [4;23] → [23]
 		head = 1 again → same as (1) → []
 
-## f2([2;1], [23;56;43;99])
+#### f2([2;1], [23;56;43;99])
 **f1 is called 2 times**
 **f2 is called 3**
 Let n be the length  of the first list [2;1]
@@ -120,7 +120,7 @@ f1 will always be called n times, f2 will always be called n + 1 times
 
 ---
 
-## Which of the following best describes the tuple usage in SML functions?
+### Which of the following best describes the tuple usage in SML functions?
 
 Tuples are used for concatenating strings.
 Tuples in SML cannot store numbers.
@@ -130,7 +130,7 @@ Tuples are used to store lists of varying types.
 
 ---
 
-## In SML, which of the following represents a polymorphic function?
+### In SML, which of the following represents a polymorphic function?
 
 A function that performs multiple tasks in one definition
 **A function with a type signature containing type variables like 'a -> 'a**
@@ -139,7 +139,7 @@ A function that operates only on integers
 
 ---
 
-## What is the inferred type of the function identity below in SML?
+### What is the inferred type of the function identity below in SML?
 `- fun identity x = x;`
 
 string -> string
@@ -149,7 +149,7 @@ int -> int
 
 ---
 
-## What is the "right to be forgotten" in the GDPR?
+### What is the "right to be forgotten" in the GDPR?
 
 **Requesting deletion of personal data**
 The ability to sue data controllers
