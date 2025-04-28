@@ -172,9 +172,107 @@ let frequency list =
   in 
   build_result [] list;;
 ```
+`let frequency list` defines the function `frequency`, taking a list `list`.
 
-## Example
+`let rec count_occurrences elem lst`, `let rec exists_in elem lst`, and `let rec build_result seen remaining` are marked `rec` so they can call themselves.
+
+`build_result [] list` is invoked last—so that’s the actual workhorse.
+
+### Example
 frequency ["a"; "a"; "a"; "b"; "b"; "c"; "c"; "c"; "c"];;
 
----
+### Logic
+	`build_result [] list` will run first
+		Base case `[] -> []`: no more elements to process
+		Recursive case `head :: tail`	
+			if `head` is already seen, skip it and moves to the next element via `build_result seen tail`
+			Otherwise, compute `count_occurrences head list`, pair it with `head`, and prepend to the result of `build_result (head :: seen) tail`
 
+	it1:
+		```ocaml
+		build_result [] ["a"; "a"; "a"; "b"; "b"; "c"; "c"; "c"; "c"]
+		seen = []
+		remaining = head = "a", tail = ["a"; "a"; "b"; "b"; "c"; "c";"c"; "c"]
+		exists_in "a" [] -> false
+		```
+
+		count_occurrences "a" ["a";"a";"a";"b";"b";"c";"c";"c";"c"]
+			head = a == elem -> 1 + count_occurrences "a" ["a";"a";"b";…]
+
+			head = a == elem → 1 + (1 + count_occurrences "a" ["a";"b";…])
+
+			head = a  == elem → 1 + (1 + (1 + count_occurrences "a" ["b";…]))
+
+			head = b != elem → count_occurrences "a" ["b"; "c";…]
+
+			(Going through rest of list looking for matching head = a)
+			heads "b","c","c","c","c" all ≠ → finally 0
+			→ total = 1+1+1+0 = 3
+
+	it2: 
+		```ocaml
+		build_result ["a"] ["a"; "a"; "b"; "b"; "c"; …]
+		seen = ["a"]
+		remaining = head = "a"
+		exists_in "a" ["a"] -> checks head = "a" immediately -> true
+		```
+
+		Skip
+		build_result ["a"] ["a"; "b"; "b"; "c"; …]
+	
+	it3: 	
+		Same as it2 but the last "a" in the original list is checked
+		build_result ["a"] ["b"; "b"; "c"; …]
+
+	it4:
+		```ocaml
+		build_result ["a"] ["b"; "b"; "c"; "c"; "c"; "c"]
+		head = "b",
+		exists_in "b" ["a"] → check "a" != "b", then [] → false
+		```
+		elem = "b"
+		count_occurrences "b" ["a";"a";"a";"b";"b";"c";…]
+		head = "a" -> skip
+		head = "a" -> skip
+		head = "a" -> skip
+		head = "b" = elem -> 1 + count_occurrences "b" ["b";"c";…]
+		head = "b" = elem -> 1 + (1 + count_occurrences "b" ["c";…])
+		heads "c","c","c","c" -> all skip -> 0 -> total = 2
+
+	it5: 	
+		```ocaml
+		build_result ["b";"a"] ["b"; "c"; "c"; "c"; "c"]
+		head = "b",
+		exists_in "b" ["b";"a"] → head="b" → true
+		Skip ->
+		```
+		build_result ["b";"a"] ["c"; "c"; "c"; "c"]
+
+	it6:
+		```ocaml
+		build_result ["b";"a"] ["c"; "c"; "c"; "c"]
+		head = "c",
+		exists_in "c" ["b";"a"] -> check "b","a" -> false
+		```
+		
+		elem = "c"
+		count_occurrences "c" ["a";"a";"a";"b";"b";"c";"c";"c";"c"]
+		first five heads != -> skip
+		
+	it7–it9
+		Each remaining "c" is in seen = ["c";"b";"a"], so all three calls skip until:
+			build_result ["c";"b";"a"] []
+		
+	Final step:
+		build_result ["c";"b";"a"] []
+			- where ["c";"b";"a"] is the `seen` list and `[]` is the remaining list
+		Once `build_result [] []` returns [], each previous frame cons-es on its (head, count) pair, threading the list upward.
+
+	(string * int) list = [("a", 3); ("b", 2); ("c", 4)]
+
+
+
+
+
+
+---
