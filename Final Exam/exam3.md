@@ -123,8 +123,8 @@ f1 will always be called n times, f2 will always be called n + 1 times
 ## Which of the following best describes the tuple usage in SML functions?
 
 Tuples are used for concatenating strings.
-**Tuples in SML cannot store numbers.**
-Tuples allow multiple parameters to be passed to functions as a single unit.
+Tuples in SML cannot store numbers.
+**Tuples allow multiple parameters to be passed to functions as a single unit.**
 Tuples are used to store lists of varying types.
 
 
