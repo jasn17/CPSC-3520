@@ -128,7 +128,7 @@ Tuples in SML cannot store numbers.
 Tuples are used to store lists of varying types.
 
 
---- 
+---
  
 ### In SML, which of the following represents a polymorphic function?
 
